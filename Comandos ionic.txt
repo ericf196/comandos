@@ -1,0 +1,48 @@
+//Abrir chrome sin seguridad para correr sin los CORS
+ "C:\Program Files\Google\Chrome\Application\chrome.exe" --disable-web-security  --user-data-dir=~/chromeTemp
+
+npx npm-check-updates -u
+
+ionic g page pages/inicio --dry-run
+
+ng generate c usuarios/lista --inline-style --skip-tests --flat --dry-run
+ng generate c usuarios/lista -s --skip-tests --flat --dry-run
+
+ ionic generate 
+ ionic generate page
+ ionic generate page contact
+ ionic generate component contact/form
+ ionic generate component login-form --change-detection=OnPush
+ ionic generate directive ripple --skip-import
+ ionic generate service services/consentService/consentService --dry-run
+
+ionic generate page pages/vitae/technical-care-visit --dry-run
+
+
+ionic capacitor build android --configuration=beta
+
+ionic build --configuration=beta
+
+ionic capacitor sync android
+
+npm install --legacy-peer-deps
+
+"scripts": {
+  "start": "ng serve"
+}
+
+ to
+
+"scripts": {
+  "start": "set NODE_OPTIONS=--openssl-legacy-provider && ng serve"
+}
+
+cat /etc/crontab
+nano /etc/crontab
+0 6 * * * php /var/www/html/homecare/controller/cron_jobs/cronMailExtensionServicio.php
+
+ONESGINAL
+
+dcoronel@vitae-health.com
+
+V1t43-4pp
