@@ -1,12 +1,16 @@
 //Abrir chrome sin seguridad para correr sin los CORS
  "C:\Program Files\Google\Chrome\Application\chrome.exe" --disable-web-security  --user-data-dir=~/chromeTemp
 
+
+/*Actualizar todas las dependencias*/
 npx npm-check-updates -u
 
-ionic g page pages/inicio --dry-run
 
+/*Gerenacion de componentes Angular (las flags no se si esten correctas)*/
 ng generate c usuarios/lista --inline-style --skip-tests --flat --dry-run
 ng generate c usuarios/lista -s --skip-tests --flat --dry-run
+
+/*Creacion de distintos elementos en IONIC */
 
  ionic generate 
  ionic generate page
@@ -15,27 +19,19 @@ ng generate c usuarios/lista -s --skip-tests --flat --dry-run
  ionic generate component login-form --change-detection=OnPush
  ionic generate directive ripple --skip-import
  ionic generate service services/consentService/consentService --dry-run
-
 ionic generate page pages/vitae/technical-care-visit --dry-run
 
+/*Creacion de distintos elementos en IONIC */
+
+/*Generacion de la Aplicacion IONIC */
 
 ionic capacitor build android --configuration=beta
-
 ionic build --configuration=beta
-
 ionic capacitor sync android
 
+/*Generacion de la Aplicacion IONIC */
+
 npm install --legacy-peer-deps
-
-"scripts": {
-  "start": "ng serve"
-}
-
- to
-
-"scripts": {
-  "start": "set NODE_OPTIONS=--openssl-legacy-provider && ng serve"
-}
 
 cat /etc/crontab
 nano /etc/crontab
