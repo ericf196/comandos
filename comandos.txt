@@ -1,12 +1,3 @@
-git stash
-git stash list
-git stash -h
-git stash apply (aplica los ultimos cambios en la pila del stash)
-git stash drop (borra stash)
-git stash clear (Elimina todo lo que esta en el stash)
-
-git stash save "comentario que aparecera en la pila de stash"
-git stash show [stash] (muestra los cambios)
 
 php artisan make:model ModalitiesPivotPhysiotherapyVisit --controller --migration --api
 php artisan make:model PhysiotherapyVisit --controller --migration
@@ -24,8 +15,6 @@ php artisan tenants:seed --class=CompanyEvaluationSeeder
 php artisan make:model RoutinePivotMembershipVisits --migration
 
 php artisan tenants:seed --class=ModulesSeeder
-
-git reset --soft HEAD~
 
 composer install --ignore-platform-reqs
 
@@ -47,8 +36,6 @@ $rules = [
         'bic'           => 'required_if:payout_method,bankTransfer|max:15|bic',
     ];
 
-
-$result = $initial ?: 'default'; // true => $initial and false => 'default'
 
 return StageNotification::whereHas('event.user', function ($query) {
             return $query->where('id', user()->id);

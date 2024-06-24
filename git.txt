@@ -1,0 +1,12 @@
+git stash
+git stash list
+git stash -h
+git stash apply (aplica los ultimos cambios en la pila del stash)
+git stash drop (borra stash)
+git stash clear (Elimina todo lo que esta en el stash)
+
+git stash save "comentario que aparecera en la pila de stash"
+git stash show [stash] (muestra los cambios)
+
+/*Disuelve el commit y deja los cambios en STAGE*/
+git reset --soft HEAD~
