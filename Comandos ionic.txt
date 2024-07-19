@@ -29,6 +29,9 @@ ionic capacitor build android --configuration=beta
 ionic build --configuration=beta
 ionic capacitor sync android
 
+/*Construir, sincronizar variables, copiar y abrir en android*/
+ionic build --configuration=beta && npx cap sync android && npx cap copy android && npx cap open android
+
 /*Generacion de la Aplicacion IONIC */
 
 npm install --legacy-peer-deps
