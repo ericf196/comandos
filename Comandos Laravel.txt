@@ -19,3 +19,9 @@ php artisan make:model RoutinePivotMembershipVisits --migration
 
 composer install --ignore-platform-reqs
 
+/*Corre la cola*/
+php artisan queue:work
+
+/*Rollback laravel*/
+php artisan migrate:rollback --step=1
+
