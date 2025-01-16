@@ -10,3 +10,7 @@ git stash show [stash] (muestra los cambios)
 
 /*Disuelve el commit y deja los cambios en STAGE*/
 git reset --soft HEAD~
+
+
+/*Devuelve todo para el ultimo commit hecho*/
+git checkout -- .
