@@ -1,0 +1,52 @@
+
+Si es un cierre parcial y destinatario tiene id de paciente o bodega no se hace nada (si es bodega esta disponible y si es paciente, lo tiene el paciente)
+Si es un cierre total y el destinatario es 9999 se debe hacer reingreso (ajuste de entrada)
+
+SELECT ue.*, e.nombre, e.codigo, e.activo FROM unidad_equipos ue
+INNER JOIN equipos e ON e.id = ue.id_equipo
+WHERE nro_serie LIKE 'TO-54'
+ORDER BY nro_serie ASC; 
+
+-- TO-54 Acusado AE-VJ42035
+
+
+
+
+
+SELECT * FROM equipos WHERE id = 1696
+-- V31797 |  -- inactivo
+SELECT * FROM unidad_equipos WHERE nro_serie = 'ot-01'
+
+SELECT td.id AS tdid, t.fechacreacion, t.tipo, t.idregistro, t.tiporemitente, t.remitente, t.idusuario, td.* 
+FROM transacciondetalle td
+LEFT JOIN transacciones t ON t.id=td.idtransaccion
+WHERE td.id IN (
+	SELECT id_transacciondetalle FROM transacciondetalle_unidad_equipos
+	WHERE id_unidad_equipos = 3432
+	)
+ORDER BY t.fechacreacion DESC 
+LIMIT 1
+
+SELECT * FROM equipos WHERE id =1709
+
+
+SELECT * FROM transacciones WHERE id = 99414
+
+SELECT * FROM bodegas WHERE id = 18 -- BODEGA DE OBARRIOS
+
+-- CIERRES
+SELECT p.nombre,c.* FROM cierres c
+INNER JOIN pacientes p ON p.id = c.idpaciente
+WHERE c.id = 13141
+
+SELECT * FROM pacientes
+WHERE id = 6224
+
+SELECT * FROM transacciondetalle_unidad_equipos td
+WHERE td.id_transacciondetalle = 1992506 
+
+-- ACUSES 
+SELECT p.nombre, e.nombre, a.* FROM acuses a
+INNER JOIN pacientes p ON p.id = a.idpaciente
+INNER JOIN estados e ON e.id = a.estatus 
+WHERE a.id = 61935

@@ -1,21 +1,34 @@
-php artisan make:seeder UsersTableSeeder
-php artisan db:seed --class=UsersTableSeeder
+php artisan make:seeder TypeTherapyGeneralRespiratoryTableSeeder 
+php artisan tenants:seed --class=VideosAndDocumentTableSeeder
 php artisan migrate --seed
 
+/*PELIGRO*/
 php artisan migrate:refresh --seed | --step=1
+/*PELIGRO*/
 
-php artisan make:model ModalitiesPivotPhysiotherapyVisit --controller --migration --api
+/*Seed tenant*/
+php artisan make:seeder VideosAndDocumentTableSeeder
+php artisan tenants:seed --class=YouTubeVideosAndDocumentTableSeeder
+/*Seed tenant*/
+
+php artisan make:controller YouTubeVideoController --api
 php artisan make:model PhysiotherapyVisit --controller --migration
+
+php artisan make:controller Api/KitReplacement/KitReplacementController --api
 
 php artisan make:request Api/Visit/StoreFamilyCommitmentSocialWorkerVisitRequest
 
-php artisan tenants:migrate --path="database/migrations/tenant/2023_08_30_130427_create_routine_pivot_membership_visits_table.php"
+php artisan tenants:migrate --path="database/migrations/tenant/2025_02_11_095754_create_video_document_level_table.php"
 
 php artisan tenants:rollback --step=1
 
 php artisan make:migration add_location_to_app_modules_table --table=app_modules
 
-php artisan make:model RoutinePivotMembershipVisits --migration
+php artisan make:model TypeTherapyGeneralRespiratoryVisit --migration
+
+/*Crear Evento*/
+php artisan make:event SendMailGeneralRespiratoryVisit
+/*Crear Listener*/
 
 composer install --ignore-platform-reqs
 

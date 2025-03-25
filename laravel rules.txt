@@ -1,0 +1,98 @@
+public function rules()
+    {
+        return [
+            'items' => 'required|array',
+            'items.*.item_description' => 'nullable|string',
+            'items.*.item_exists' => 'required',
+            'items.*.supplies_id' => 'sometimes',
+            'rating' => 'required|integer|between:1,5',
+            'deliveryDate' => 'required|date',
+            'typeRequirement' => [
+                'required',
+                Rule::in([
+                    'medicamentos',
+                    'muestras-pendientes',
+                    'insumos',
+                    'nueva-orden-medica',
+                    'retiro-insumos',
+                    'equipos',
+                    'desechos',
+                    'laboratorio',
+                    'inicio-servicio',
+                    'aseguradora-cobro',
+                    'compra-insumos-medicamentos',
+                    'recordatorio',
+                    'bitacoras',
+                    'cobro',
+                    'otros',
+                ]),
+            ]
+        ];
+    }
+
+
+public function rules()
+    {
+        return [
+            'formType'
+            => [
+                'required',
+                Rule::in([
+                    'generalities-form',
+                    'medication-review-form',
+                    'sleep-hygiene-form',
+                    'personal-hygiene-form',
+                    'evacuatory-habit-form',
+                ]),
+            ],
+
+            'properHandling' => 'required_if:formType,generalities-form|boolean',
+            'properHandlingSelected' => 'exclude_if:properHandling,true|array|min:1',
+            'knowsVitalSigns' => 'required_if:formType,generalities-form|boolean',
+            'knowsVitalSignsSelected' => 'exclude_if:knowsVitalSigns,false|array|min:1',
+            'goodFeedingTechnique' => 'required_if:formType,generalities-form|boolean',
+            'goodFeedingTechniqueObservation' => 'required_if:goodFeedingTechnique,false',
+            'adequatePatientMobilization' => 'required_if:formType,generalities-form|boolean',
+            'adequatePatientMobilizationObservation' => 'required_if:adequatePatientMobilization,false',
+            'generalitiesObservation' => 'required_if:formType,generalities-form|string',
+
+            'suitableLocation' => 'required_if:formType,medication-review-form|boolean',
+            'properStorage' => 'required_if:formType,medication-review-form|boolean',
+            'adequateAccessibility' => 'required_if:formType,medication-review-form|array|min:1',
+            'schedulesMet' => 'required_if:formType,medication-review-form|boolean',
+            'properExpirationDate' => 'required_if:formType,medication-review-form|boolean',
+            'properExpirationDateObservation' => 'exclude_if:properExpirationDate,true|string',
+
+            'previousRoutinesObservation' => 'required_if:formType,sleep-hygiene-form|string',
+            'snap' => 'required_if:formType,sleep-hygiene-form|boolean',
+            'howManyNaps' => 'exclude_if:snap,false|integer',
+            'snapDuration' => 'exclude_if:snap,false|integer',
+            'screenUseBeforeBed' => 'required_if:formType,sleep-hygiene-form|boolean',
+            'screenUseBeforeBedObservation' => 'required_if:screenUseBeforeBed,true',
+            'schedulesObservation' => 'required_if:formType,sleep-hygiene-form|string',
+            'stimulatingDrinks' => 'required_if:formType,sleep-hygiene-form|boolean',
+            'whatStimulatingDrinks' => 'exclude_if:stimulatingDrinks,false|string',
+            'frequencyStimulatingDrinks' => 'exclude_if:stimulatingDrinks,false|string',
+            'difficultySleep' => 'required_if:formType,sleep-hygiene-form|boolean',
+            'difficultySleepObservation' => 'required_if:difficultySleep,true',
+            'difficultyMaintainingSleep' => 'required_if:formType,sleep-hygiene-form|boolean',
+            'difficultyMaintainingSleepObservation' => 'required_if:difficultyMaintainingSleep,true',
+
+            'dailyBath' => 'required_if:formType,personal-hygiene-form|boolean',
+            'moisturizerApplication' => 'required_if:formType,personal-hygiene-form|boolean',
+            'circulatoryMassage' => 'required_if:formType,personal-hygiene-form|boolean',
+            'hairWashingFrequencyObservation' => 'required_if:formType,personal-hygiene-form|string',
+            'dailyHairBrushing' => 'required_if:formType,personal-hygiene-form|boolean',
+            'brushingThreeTimes' => 'required_if:formType,personal-hygiene-form|boolean',
+            'brushingThreeTimesObservation' => 'required_if:brushingThreeTimes,false',
+            'properTrimmingHairs' => 'required_if:formType,personal-hygiene-form|boolean',
+            'dentalProsthesis' => 'required_if:formType,personal-hygiene-form|boolean',
+            'lastRevisionDate' => 'exclude_if:dentalProsthesis,false|date_format:Y-m-d',
+
+            'frequencyWeek' => 'required_if:formType,evacuatory-habit-form|string',
+            'physicalAssistance' => 'required_if:formType,evacuatory-habit-form|boolean',
+            'useLaxatives' => 'required_if:formType,evacuatory-habit-form|boolean',
+            'useLaxativesObservation' => 'required_if:useLaxatives,true',
+            'stoolCharacteristics' => 'required_if:formType,evacuatory-habit-form|array|min:1',
+        ];
+    }
